@@ -1,54 +1,36 @@
 import React from 'react';
+import TOC from './components/TOC';
+import Subject from './components/Subject';
+import Content from './components/Content';
 import './App.css';
 
 
-class Subject extends React.Component{
-  render(){
-    return(
-      <header>
-        <h1>WEB</h1>
-        world wide web~!
-      </header>    
-
-    );
-  }
-}
-
-class TOC extends React.Component{
-  render(){
-    return(
-      <nav>
-        <ul>
-          <li><a href='1.html'>HTML</a></li>
-          <li><a href='2.html'>CSS</a></li>
-          <li><a href='3.html'>Javascript</a></li>
-
-        </ul>
-      </nav>
-
-
-    );
-  }
-}
-
-class Content extends React.Component{
-  render(){
-    return(
-      <article>
-        <h2>HTML</h2>
-        HTML is HyperText Markup Language.
-      </article>
-    );
-  }
-}
-
 class App extends React.Component{
+  constructor(props){
+    super(props);
+    this.state = {
+      mode: 'welcome',
+      subject:{title:'WEB', sub:'World Wide Web'},
+      welcome:{title:'Welcome', desc:'Hello, React!!'},
+      contents:[
+        {id:1, title:'HTML', desc:'HTML is for information.'},
+        {id:2, title:'CSS', desc:'CSS is for design.'},
+        {id:3, title:'Javascript', desc:'Javascript is for interactive.'}
+      ]
+    }
+  }
   render(){
+    var _title, _desc = null;
+    if (this.state.mode === 'welcome'){
+      
+    }else if(this.state.mode==='read'){
+
+    }
     return (
       <div className="App">
-        <Subject></Subject>
-        <TOC></TOC>
-        <Content></Content>
+        <Subject title={this.state.subject.title} sub={this.state.subject.sub}></Subject>
+        <TOC data={this.state.contents}></TOC>
+        <Content title='HTML' desc='HTML is HyperText Markup Language'></Content>
       </div>
     );
   }
